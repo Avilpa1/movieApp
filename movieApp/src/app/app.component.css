@@ -1,0 +1,20 @@
+.searchBar {
+    width: 50%;
+    align: center;
+    }
+
+.gridContainer {
+    display: flex;
+    color: white;
+    grid-template-columns: auto auto auto;
+    
+    }
+    
+.gridItems {
+    justify-self: center;
+    text-align: center;
+}
+
+.pageLink {
+    background-color: grey;
+}
