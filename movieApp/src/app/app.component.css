@@ -3,18 +3,7 @@
     align: center;
     }
 
-.gridContainer {
-    display: flex;
-    color: white;
-    grid-template-columns: auto auto auto;
-    
-    }
-    
-.gridItems {
-    justify-self: center;
-    text-align: center;
-}
-
-.pageLink {
-    background-color: grey;
+app-poster-nav {
+    bottom: 0px;
+    position: fixed
 }

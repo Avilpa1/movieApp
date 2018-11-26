@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './api.service';
 import { FormsModule } from '@angular/forms';
+import { PosterNavComponent } from './poster-nav/poster-nav.component';
+import { MovieDisplayComponent } from './movie-display/movie-display.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PosterNavComponent,
+    MovieDisplayComponent
   ],
   imports: [
     BrowserModule,

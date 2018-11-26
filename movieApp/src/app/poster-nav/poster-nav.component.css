@@ -1,0 +1,47 @@
+.gridContainer {
+    display: flex;
+    color: white;
+    height: 270px;
+    transform: translateX(0);
+    transition: 15s;
+    transition-timing-function: linear;
+    transition-delay: .5s;
+    }
+    
+.gridContainer:hover {
+    transform: translateX(-50%);
+    
+}
+
+.pageLink {
+    background-color: grey;
+    width: 300px;
+    height: 500px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h3 {
+    margin-top: -6px;
+}
+
+img {
+    height: 220px; 
+    width: auto;   
+}
+
+.gridItems {
+    justify-self: center;
+    text-align: center;
+    transition: transform .2s;
+    margin: 3px;
+
+}
+
+.gridItems:hover {
+    -ms-transform: scale(1.3); /* IE 9 */
+    -webkit-transform: scale(1.3); /* Safari 3-8 */
+    transform: scale(1.3); 
+}

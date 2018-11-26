@@ -11,11 +11,12 @@ export class ApiService {
   search: any;
   results: any;
   api_key: string = 'c9bd3497000b71346920ffc2b16d1e37'
+  bg: any
   
     getInfo() {
     // return this._http.get("https://api.themoviedb.org/3/movie/76341?api_key=" + this.api_key );
+    // return this._http.get("https://api.themoviedb.org/3/search/movie?api_key=" + this.api_key + "&query=" + this.search + '&page=2');
     return this._http.get("https://api.themoviedb.org/3/search/movie?api_key=" + this.api_key + "&query=" + this.search );
-
     
   }
   
@@ -27,6 +28,14 @@ export class ApiService {
         console.log(response)
       
       })
+  }
+  
+  bgChange(bdPath) {
+      this.bg = document.getElementById('background_wrap');
+      let bdFull = 'url(https://image.tmdb.org/t/p/w1280/' + bdPath + ')'
+      console.log(bdFull)
+      this.bg.style.backgroundImage = this.bg.style.backgroundImage = bdFull
+      console.log(this.bg.style.backgroundImage)
   }
   
 }
