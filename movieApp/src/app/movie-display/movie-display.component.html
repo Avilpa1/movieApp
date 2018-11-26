@@ -1,29 +1,28 @@
-<div class='displayContainer' *ngIf="maService.results">
+<div class='displayContainer' >
     
-    
-    <div id='display1'>Title</div>
-    <div id='display2'>
-        <img src="https://image.tmdb.org/t/p/w500/{{ maService.results.results.poster_path }}">
-    </div>
-    <div id='display3'>Info</div>
-    <div id='display4'></div>
-    <div id='display5'></div>
+<div class="videoBox" id="youTube"></div>
+
 </div>
 
 
 
+<!--<h4>{{ maService.resultsYouTube.items[0].id.videoId }}</h4>-->
 
+<!--    <div id='display1'>Title</div>-->
+<!--    <div id='display2'>-->
+<!--        <img src="https://image.tmdb.org/t/p/w500/{{ maService.results.results.poster_path }}">-->
+<!--    </div>-->
+<!--    <div id='display3'>Info</div>-->
+<!--    <div id='display4'></div>-->
+<!--    <div id='display5'></div>-->
+<!--</div>-->
 
+<!--<div class='gridContainer' >-->
+<!--    <div *ngFor="let x of maService.results.results; let i = index">-->
+<!--      <div class="gridItems">-->
 
-
-
-<div class='gridContainer' >
-    <div *ngFor="let x of maService.results.results; let i = index">
-      <div class="gridItems">
-
-      <img (click)="maService.bgChange(x.backdrop_path)" src="https://image.tmdb.org/t/p/w500/{{ x.poster_path }}">
+<!--      <img (click)="maService.bgChange(x.backdrop_path)" src="https://image.tmdb.org/t/p/w500/{{ x.poster_path }}">-->
       <!--<h3>{{ x.original_title }}</h3> -->
 
-      </div>
-  </div>
-</div>
+<!--      </div>-->
+<!--  </div>-->

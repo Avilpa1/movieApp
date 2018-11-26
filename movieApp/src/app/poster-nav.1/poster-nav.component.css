@@ -1,7 +1,7 @@
 .gridContainer {
     display: flex;
     color: white;
-    height: 250px;
+    height: 270px;
     transform: translateX(0);
     transition: 15s;
     transition-timing-function: linear;
@@ -28,7 +28,7 @@ h3 {
 }
 
 img {
-    height: 200px; 
+    height: 220px; 
     width: auto;   
 }
 
