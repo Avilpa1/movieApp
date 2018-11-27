@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(public _http : HttpClient, public sanitizer: DomSanitizer) { }
-  sanitizer = sanitizer;   
+  constructor(public _http : HttpClient) { }
+
   search: any;
+  popResults: any;
   results: any;
   resultsYouTube: any;
   api_key: string = 'c9bd3497000b71346920ffc2b16d1e37'
@@ -17,16 +18,40 @@ export class ApiService {
   youtubeUrl: any
   bg: any
   inset: any
+  random = Math.floor((Math.random() * 10) + 1)
+  
+    ngOnInit() {
+    // this.maService.getPopData()
+    // let x = maService.popResults.results[0]
+    console.log("test")
+    // this.maService.clickLoad(x.backdrop_path, x.title)
+  }
   
     getInfo() {
     // return this._http.get("https://api.themoviedb.org/3/movie/76341?api_key=" + this.api_key );
     // return this._http.get("https://api.themoviedb.org/3/search/movie?api_key=" + this.api_key + "&query=" + this.search + '&page=2');
     return this._http.get("https://api.themoviedb.org/3/search/movie?api_key=" + this.api_key + "&query=" + this.search );
-    return this._http.get("https://www.googleapis.com/youtube/v3/search?maxResults=5&part=snippet&q=" + this.search + "&key=" + this.youtube_key)
   }
   
+    getPop() {
+    return this._http.get("https://api.themoviedb.org/3/movie/popular?api_key=" + this.api_key + "&language=en-US&page=1");
+  }
+      
     getYoutube(title) {
     return this._http.get("https://www.googleapis.com/youtube/v3/search?maxResults=5&part=snippet&q=" + title + " trailer" + "&key=" + this.youtube_key)
+  }
+      
+    getPopData() {
+    this.getPop()
+    .subscribe(
+      (response) =>  {
+        this.results = response
+
+        
+        let x = this.results.results[this.random]
+        this.clickLoad(x.backdrop_path, x.title)
+        
+      })
   }
   
     getData() {
@@ -69,6 +94,6 @@ export class ApiService {
         document.getElementById('youTube').innerHTML = this.videoInset
     }
   
-  
+  } 
 }
 

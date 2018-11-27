@@ -8,13 +8,15 @@ import { ApiService } from './api.service';
 import { FormsModule } from '@angular/forms';
 import { PosterNavComponent } from './poster-nav/poster-nav.component';
 import { MovieDisplayComponent } from './movie-display/movie-display.component';
+import { SearchNavComponent } from './search-nav/search-nav.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PosterNavComponent,
-    MovieDisplayComponent
+    MovieDisplayComponent,
+    SearchNavComponent
   ],
   imports: [
     BrowserModule,

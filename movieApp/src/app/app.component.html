@@ -1,31 +1,8 @@
-<div class="searchBar">
-<input [(ngModel)]="maService.search">
-<button (click)="maService.getData()">test</button>
-</div>
 
 
+<app-search-nav></app-search-nav>
 <app-movie-display></app-movie-display>
 <app-poster-nav></app-poster-nav>
 <router-outlet></router-outlet>
 
 
-
-<!--<div class='gridContainer' *ngIf="maService.results">-->
-<!--    <div *ngFor="let x of maService.results.results; let i = index">-->
-<!--      <div class="gridItems">-->
-      <!--<span>-->
-<!--      <h3>{{ x.original_title }}</h3>  -->
-<!--      <img src="https://image.tmdb.org/t/p/w500/{{ x.poster_path }}">-->
-<!--      <h4>{{ i }}</h4>-->
-<!--      </span>-->
-<!--      </div>-->
-<!--  </div>-->
-<!--</div>-->
-
-<!--<div class="pageLink" *ngIf="maService.results">-->
-<!--  <div *ngFor="let z of maService.results">-->
-<!--    <div ngIf=" z.total_pages == z.total_pages">-->
-<!--    <a>test area {{ z }}</a>-->
-<!--  </div>-->
-<!--  </div>-->
-<!--</div>-->
