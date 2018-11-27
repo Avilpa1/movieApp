@@ -18,7 +18,8 @@ export class ApiService {
   youtubeUrl: any
   bg: any
   inset: any
-  random = Math.floor((Math.random() * 10) + 1)
+  random = Math.floor((Math.random() * 20) + 1)
+  posterInset
   
     ngOnInit() {
     // this.maService.getPopData()
@@ -49,7 +50,7 @@ export class ApiService {
 
         
         let x = this.results.results[this.random]
-        this.clickLoad(x.backdrop_path, x.title)
+        this.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path)
         
       })
   }
@@ -71,9 +72,11 @@ export class ApiService {
   }
 
 
-  clickLoad(bdPath, title) {
+  clickLoad(bdPath, title, overview, poster) {
     this.bgChange(bdPath)
     this.getYoutubeVideo(title)
+    this.loadInfo(poster, overview, title)
+
   }
     
     
@@ -81,6 +84,18 @@ export class ApiService {
       this.bg = document.getElementById('background_wrap');
       let bdFull = 'url(https://image.tmdb.org/t/p/w1280/' + bdPath + ')'
       this.bg.style.backgroundImage = this.bg.style.backgroundImage = bdFull
+  }
+  
+  loadInfo(poster, overview, title) {
+    
+    document.getElementById('title').innerHTML = title
+    
+    this.posterInset = 'https://image.tmdb.org/t/p/w500' + poster
+    document.getElementById('poster').innerHTML = this.posterInset
+    
+    document.getElementById('overview').innerHTML = overview
+    
+    
   }
   
   getYoutubeVideo(title) {
@@ -93,7 +108,7 @@ export class ApiService {
         this.videoInset = '<iframe id="iframeBox" width="560" height="315" src="' + this.youtubeUrl + '" frameborder="0" allowfullscreen></iframe>'
         document.getElementById('youTube').innerHTML = this.videoInset
     }
-  
   } 
+  
 }
 
