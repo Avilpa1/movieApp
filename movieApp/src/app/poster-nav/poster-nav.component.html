@@ -1,10 +1,12 @@
-<div class='gridContainer' *ngIf="maService.results">
-    <div *ngFor="let x of maService.results.results; let i = index">
-      <div class="gridItems">
-      <span>
-      <img (click)="maService.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path)" src="https://image.tmdb.org/t/p/w500/{{ x.poster_path }}">
-      <!--<h3>{{ x.original_title }}</h3> -->
-      </span>
-      </div>
+<div class="outSideContainer">
+  <div class='gridContainer' *ngIf="maService.results">
+      <div *ngFor="let x of maService.results.results; let i = index">
+        <div class="gridItems">
+        <span>
+        <img (click)="maService.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path)" src="https://image.tmdb.org/t/p/w500/{{ x.poster_path }}">
+        <!--<h3>{{ x.original_title }}</h3> -->
+        </span>
+        </div>
+    </div>
   </div>
 </div>

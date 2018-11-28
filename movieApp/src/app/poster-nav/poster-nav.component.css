@@ -1,16 +1,30 @@
+.outSideContainer {
+    /*background-color: white;*/
+    position: relative;
+    bottom: -130px;
+    transform: translateY(0);
+    transition: .2s;
+    transition-timing-function: linear;
+}
+
+.outSideContainer:hover {
+    transform: translateY(-60%);
+}
+
 .gridContainer {
     display: flex;
     color: white;
-    height: 210px;
+    height: 220px;
     transform: translateX(0);
+    transition-property: width, height;
     transition: 15s;
     transition-timing-function: linear;
     transition-delay: .5s;
     }
     
+
 .gridContainer:hover {
     transform: translateX(-50%);
-    
 }
 
 .pageLink {
