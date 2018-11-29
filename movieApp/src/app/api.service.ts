@@ -95,8 +95,6 @@ export class ApiService {
         .subscribe(
         (response) =>  {
         this.resultsActors = response
-        
-        console.log(this.resultsActors.cast)
     }
   }
   
