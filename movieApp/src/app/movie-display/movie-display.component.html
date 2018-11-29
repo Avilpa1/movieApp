@@ -1,14 +1,32 @@
 
 <div class="outerDisplayContainer">
-<div class='displayContainer' >
+<div class="displayContainer" >
+
+<div class="actorContainer" *ngIf="maService.resultsActors">
+<div *ngFor="let x of maService.resultsActors.cast; let i = index">
+    <div *ngIf="i<5">
+        <div id="actorBox">
+            <img id="actors" src="https://image.tmdb.org/t/p/w500/{{ x.profile_path }}">
+                <div id="actorText">
+                    <a id="actorName">{{ x.name }}</a>
+                    <br>
+                    <a>{{ x.character }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
     
-<div class="video-container">    
+<div class="video-container" id="video-container">    
 <div class="videoBox" id="youTube"></div>
 </div>
 
 <img id="poster" src="{{ maService.posterInset }}">
 <div id="title"></div>
 
+
 <div id="overview"><p>test overview</p></div>
+
+
 </div>
 </div>

@@ -13,6 +13,7 @@ export class ApiService {
   popResults: any;
   results: any;
   resultsYouTube: any;
+  resultsActors: any;
   api_key: string = 'c9bd3497000b71346920ffc2b16d1e37'
   youtube_key: string = 'AIzaSyClmq7p10MpgPEwc0HE-8V9fKd5uD_cRNM'
   youtubeUrl: any
@@ -41,6 +42,10 @@ export class ApiService {
     getYoutube(title) {
     return this._http.get("https://www.googleapis.com/youtube/v3/search?maxResults=5&part=snippet&q=" + title + " trailer" + "&key=" + this.youtube_key)
   }
+  
+    getActorsData(id) {
+    return this._http.get("https://api.themoviedb.org/3/movie/" + id + "/credits?api_key=" + this.api_key);
+  }
       
     getPopData() {
     this.getPop()
@@ -48,12 +53,12 @@ export class ApiService {
       (response) =>  {
         this.results = response
 
-        
         let x = this.results.results[this.random]
-        this.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path)
-        
+        this.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id)
       })
   }
+  
+
   
     getData() {
     this.getInfo()
@@ -61,43 +66,18 @@ export class ApiService {
       (response) =>  {
         this.results = response
         console.log(response)
-      
+        
+        let x = this.results.results[0]
+        this.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id)
       })
       
-    this.getYoutube()
-    .subscribe(
-      (response) =>  {
-        this.resultsYouTube = response
-      })
+    // this.getYoutube()
+    // .subscribe(
+    //   (response) =>  {
+    //     this.resultsYouTube = response
+    //   })
   }
 
-
-  clickLoad(bdPath, title, overview, poster) {
-    this.bgChange(bdPath)
-    this.getYoutubeVideo(title)
-    this.loadInfo(poster, overview, title)
-
-  }
-    
-    
-  bgChange(bdPath) {
-      this.bg = document.getElementById('background_wrap');
-      let bdFull = 'url(https://image.tmdb.org/t/p/w1280/' + bdPath + ')'
-      this.bg.style.backgroundImage = this.bg.style.backgroundImage = bdFull
-  }
-  
-  loadInfo(poster, overview, title) {
-    
-    document.getElementById('title').innerHTML = title
-    
-    this.posterInset = 'https://image.tmdb.org/t/p/w500' + poster
-    document.getElementById('poster').innerHTML = this.posterInset
-    
-    document.getElementById('overview').innerHTML = overview
-    
-    
-  }
-  
   getYoutubeVideo(title) {
         this.getYoutube(title)
         .subscribe(
@@ -108,7 +88,41 @@ export class ApiService {
         this.videoInset = '<iframe id="iframeBox" width="560" height="315" src="' + this.youtubeUrl + '" frameborder="0" allowfullscreen></iframe>'
         document.getElementById('youTube').innerHTML = this.videoInset
     }
-  } 
+  }
   
+  getActors(id) {
+        this.getActorsData(id)
+        .subscribe(
+        (response) =>  {
+        this.resultsActors = response
+        
+        console.log(this.resultsActors.cast)
+    }
+  }
+  
+  clickLoad(bdPath, title, overview, poster, id) {
+      this.bgChange(bdPath)
+      this.getYoutubeVideo(title)
+      this.loadInfo(poster, overview, title)
+      this.getActors(id)
+  }
+    
+    
+  bgChange(bdPath) {
+      this.bg = document.getElementById('background_wrap');
+      let bdFull = 'url(https://image.tmdb.org/t/p/w1280/' + bdPath + ')'
+      this.bg.style.backgroundImage = this.bg.style.backgroundImage = bdFull
+  }
+  
+  loadInfo(poster, overview, title) {
+      document.getElementById('title').innerHTML = title
+      this.posterInset = 'https://image.tmdb.org/t/p/w500' + poster
+      document.getElementById('poster').innerHTML = this.posterInset
+      document.getElementById('overview').innerHTML = overview
+  }
+  
+
+    
+    
 }
 
