@@ -4,7 +4,7 @@
     bottom: -130px;
     transform: translateY(0);
     transition: .2s;
-    transition-timing-function: linear;
+    transition-timing-function: linear; 
 }
 
 .outSideContainer:hover {

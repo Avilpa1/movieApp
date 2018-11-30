@@ -13,5 +13,23 @@ export class SearchNavComponent implements OnInit {
   ngOnInit() {
     this.maService.getPopData()
   }
+  
+  openLogin() {
+    document.getElementById("logInForm").style.display = "block";
+}
+
+  closeLogin() {
+    document.getElementById("logInForm").style.display = "none";
+}
+
+  openSignUp() {
+    document.getElementById("signUpForm").style.display = "block";
+}
+
+  closeSignUp() {
+    document.getElementById("signUpForm").style.display = "none";
+}
+
+  
 
 }

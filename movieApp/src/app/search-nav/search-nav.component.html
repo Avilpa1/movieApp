@@ -5,12 +5,45 @@
 
 <div class="searchBar">
 <input [(ngModel)]="maService.search">
-<!--<button (click)="maService.getData()">Search</button>-->
+<button (click)="maService.getData()">Search</button>
 </div>
     
 	<div class="buttons">
-		<a id="login">Log in</a>
-		<a id="signup">Sign up</a>
-	</div>    
+		<a id="login" (click)="openLogin()">Log in</a>
+		<a id="signup" (click)="openSignUp()">Sign up</a>
+	</div> 
+	
+	
+	<!--<button class="open-button" onclick="openForm()">Open Form</button>-->
+
+<div class="form-popup" id="logInForm">
+  <form action="/action_page.php" class="form-container">
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <button type="submit" class="btn">Login</button>
+    <button type="button" class="btn cancel" (click)="closeLogin()">Close</button>
+  </form>
+</div>
+
+<div class="signUpform-popup" id="signUpForm">
+  <form action="/action_page.php" class="signUpform-container">
+  	<div id="signupHeader">
+  	  <h1>Sign Up!<button type="buttonX" class="cancelX" (click)="closeSignUp()">X</button></h1>
+  	  
+  	</div>
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <button type="submit" class="btn">Login</button>
+    <!--<button type="button" class="btn cancel" (click)="closeSignUp()">Close</button>-->
+  </form>
+</div>
     
 </div>

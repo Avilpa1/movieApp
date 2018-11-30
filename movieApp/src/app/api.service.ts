@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(public _http : HttpClient) { }
+  constructor(public _http : HttpClient, private uService: UserService) { }
 
   search: any;
   popResults: any;
@@ -20,7 +20,8 @@ export class ApiService {
   bg: any
   inset: any
   random = Math.floor((Math.random() * 20) + 1)
-  posterInset
+  posterInset: any
+  videoInset: any
   
     ngOnInit() {
     // this.maService.getPopData()
@@ -46,6 +47,7 @@ export class ApiService {
     getActorsData(id) {
     return this._http.get("https://api.themoviedb.org/3/movie/" + id + "/credits?api_key=" + this.api_key);
   }
+  
       
     getPopData() {
     this.getPop()
@@ -57,8 +59,6 @@ export class ApiService {
         this.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id)
       })
   }
-  
-
   
     getData() {
     this.getInfo()
@@ -87,7 +87,7 @@ export class ApiService {
         this.youtubeUrl = "https://www.youtube.com/embed/" + this.resultsYouTube.items[0].id.videoId
         this.videoInset = '<iframe id="iframeBox" width="560" height="315" src="' + this.youtubeUrl + '" frameborder="0" allowfullscreen></iframe>'
         document.getElementById('youTube').innerHTML = this.videoInset
-    }
+    })
   }
   
   getActors(id) {
@@ -95,7 +95,7 @@ export class ApiService {
         .subscribe(
         (response) =>  {
         this.resultsActors = response
-    }
+    })
   }
   
   clickLoad(bdPath, title, overview, poster, id) {
@@ -103,6 +103,7 @@ export class ApiService {
       this.getYoutubeVideo(title)
       this.loadInfo(poster, overview, title)
       this.getActors(id)
+      this.uService.signUpUser()
   }
     
     
@@ -119,8 +120,5 @@ export class ApiService {
       document.getElementById('overview').innerHTML = overview
   }
   
-
-    
-    
 }
 

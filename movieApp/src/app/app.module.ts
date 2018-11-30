@@ -4,7 +4,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
+
 import { ApiService } from './api.service';
+import { UserService } from './user.service';
+
 import { FormsModule } from '@angular/forms';
 import { PosterNavComponent } from './poster-nav/poster-nav.component';
 import { MovieDisplayComponent } from './movie-display/movie-display.component';
@@ -24,7 +27,7 @@ import { SearchNavComponent } from './search-nav/search-nav.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
