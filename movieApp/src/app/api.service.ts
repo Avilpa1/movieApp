@@ -22,6 +22,7 @@ export class ApiService {
   random = Math.floor((Math.random() * 20) + 1)
   posterInset: any
   videoInset: any
+  posterFade: any
   
     ngOnInit() {
     // this.maService.getPopData()
@@ -121,4 +122,3 @@ export class ApiService {
   }
   
 }
-
