@@ -15,6 +15,7 @@ export class SearchNavComponent implements OnInit {
   }
   
   openLogin() {
+    this.closeSignUp()
     document.getElementById("logInForm").style.display = "block";
 }
 
@@ -23,6 +24,7 @@ export class SearchNavComponent implements OnInit {
 }
 
   openSignUp() {
+    this.closeLogin()
     document.getElementById("signUpForm").style.display = "block";
 }
 

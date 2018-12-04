@@ -8,7 +8,9 @@ import { UserService } from './user.service';
 export class ApiService {
 
   constructor(public _http : HttpClient, private uService: UserService) { }
-
+  
+  mdbURL: string = 'https://api.themoviedb.org/3'
+  ytURL
   search: any;
   popResults: any;
   results: any;
@@ -16,37 +18,34 @@ export class ApiService {
   resultsActors: any;
   api_key: string = 'c9bd3497000b71346920ffc2b16d1e37'
   youtube_key: string = 'AIzaSyClmq7p10MpgPEwc0HE-8V9fKd5uD_cRNM'
-  youtubeUrl: any
+  youtubeUrl: string = 'https://www.googleapis.com/youtube/v3/search?maxResults=5&part=snippet&q='
+  youtubeVideoUrl: any
   bg: any
   inset: any
   random = Math.floor((Math.random() * 20) + 1)
   posterInset: any
   videoInset: any
-  posterFade: any
+
   
     ngOnInit() {
-    // this.maService.getPopData()
-    // let x = maService.popResults.results[0]
-    console.log("test")
-    // this.maService.clickLoad(x.backdrop_path, x.title)
   }
   
     getInfo() {
     // return this._http.get("https://api.themoviedb.org/3/movie/76341?api_key=" + this.api_key );
     // return this._http.get("https://api.themoviedb.org/3/search/movie?api_key=" + this.api_key + "&query=" + this.search + '&page=2');
-    return this._http.get("https://api.themoviedb.org/3/search/movie?api_key=" + this.api_key + "&query=" + this.search );
+    return this._http.get(this.mdbURL + "/search/movie?api_key=" + this.api_key + "&query=" + this.search );
   }
   
     getPop() {
-    return this._http.get("https://api.themoviedb.org/3/movie/popular?api_key=" + this.api_key + "&language=en-US&page=1");
+    return this._http.get(this.mdbURL + "/movie/popular?api_key=" + this.api_key + "&language=en-US&page=1");
   }
       
     getYoutube(title) {
-    return this._http.get("https://www.googleapis.com/youtube/v3/search?maxResults=5&part=snippet&q=" + title + " trailer" + "&key=" + this.youtube_key)
+    return this._http.get(this.youtubeUrl + title + " trailer" + "&key=" + this.youtube_key)
   }
   
     getActorsData(id) {
-    return this._http.get("https://api.themoviedb.org/3/movie/" + id + "/credits?api_key=" + this.api_key);
+    return this._http.get(this.mdbURL + "/movie/" + id + "/credits?api_key=" + this.api_key);
   }
   
       
@@ -71,12 +70,6 @@ export class ApiService {
         let x = this.results.results[0]
         this.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id)
       })
-      
-    // this.getYoutube()
-    // .subscribe(
-    //   (response) =>  {
-    //     this.resultsYouTube = response
-    //   })
   }
 
   getYoutubeVideo(title) {
@@ -85,8 +78,8 @@ export class ApiService {
         (response) =>  {
         this.resultsYouTube = response
         
-        this.youtubeUrl = "https://www.youtube.com/embed/" + this.resultsYouTube.items[0].id.videoId
-        this.videoInset = '<iframe id="iframeBox" width="560" height="315" src="' + this.youtubeUrl + '" frameborder="0" allowfullscreen></iframe>'
+        this.youtubeVideoUrl = "https://www.youtube.com/embed/" + this.resultsYouTube.items[0].id.videoId
+        this.videoInset = '<iframe id="iframeBox" width="560" height="315" src="' + this.youtubeVideoUrl + '" frameborder="0" allowfullscreen></iframe>'
         document.getElementById('youTube').innerHTML = this.videoInset
     })
   }

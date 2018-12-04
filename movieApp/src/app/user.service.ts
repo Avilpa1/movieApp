@@ -17,9 +17,16 @@ export class UserService {
   }
   
   signUpResult: any;
+  dbURL: string = "http://meanstack-2018-5-paul-phortonssf.c9users.io:8080/api/AppUsers"
   
   signUp() {
-      return this._http.post("http://meanstack-2018-5-paul-phortonssf.c9users.io:8080/api/AppUsers",   { firstName: 'efee', lastName: 'ewe', email: 'wewe2@yahoo.com', password: 'dsds' })
+      return this._http.post(this.dbURL, { 
+        firstName: 'ehigusdsasasfe454e', 
+        lastName: '22111easwe', 
+        email: '112asas1@yahoo.com', 
+        password: '111dsds' 
+        
+      })
     }
   
   signUpUser() {
