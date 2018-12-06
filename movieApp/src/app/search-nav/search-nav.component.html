@@ -1,6 +1,8 @@
 <div class="navContainer">
     <div class="logo">
-		<img id="logo" src="https://www.themoviedb.org/assets/1/v4/logos/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg">
+      <a href="http://meanstack-2018-5-paul-phortonssf.c9users.io:8081/">
+		    <img id="logo" src="https://www.themoviedb.org/assets/1/v4/logos/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg">
+	    </a>
 	</div> 
 
 <div class="searchBar">
@@ -9,40 +11,49 @@
 </div>
     
 	<div class="buttons">
-		<a id="login" (click)="openLogin()">Log in</a>
-		<a id="signup" (click)="openSignUp()">Sign up</a>
+	  <div id="innerButton">
+		<a id="login" (click)="uService.openLogin()">Log in</a>
+		<a id="signup" (click)="uService.openSignUp()">Sign up</a>
+		</div>
+		<div id="loggedinUserName">
+		  <a id="userNameDisplay" (click)="uService.logOutUser()"></a>
+		</div>
 	</div> 
 	
-	
-	<!--<button class="open-button" onclick="openForm()">Open Form</button>-->
+
 
 <div class="form-popup" id="logInForm">
   <form action="/action_page.php" class="form-container">
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <input [(ngModel)]="uService.userCred.email" type="text" placeholder="Enter Email" name="email" required>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input [(ngModel)]="uService.userCred.password" type="password" placeholder="Enter Password" name="psw" required>
 
-    <button type="submit" class="btn">Login</button>
-    <button type="button" class="btn cancel" (click)="closeLogin()">Close</button>
+    <button type="submit" class="btn" (click)="uService.logInUser()">Login</button>
+    <button type="button" class="btn cancel" (click)="uService.closeLogin()">Close</button>
   </form>
 </div>
 
 <div class="signUpform-popup" id="signUpForm">
   <form action="/action_page.php" class="signUpform-container">
   	<div id="signupHeader">
-  	  <h1>Sign Up!<button type="buttonX" class="cancelX" (click)="closeSignUp()">X</button></h1>
+  	  <h1>Sign Up!<button type="buttonX" class="cancelX" (click)="uService.closeSignUp()">X</button></h1>
   	  
   	</div>
+  	<label for="email"><b>First Name</b></label>
+    <input [(ngModel)]="uService.user.firstName" type="text" placeholder="First Name" name="firstName" required>
+    
+    <label for="email"><b>Last Name</b></label>
+    <input [(ngModel)]="uService.user.lastName" type="text" placeholder="Last Name" name="lastName" required>
+    
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <input [(ngModel)]="uService.user.email" type="text" placeholder="Email" name="email" required>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input [(ngModel)]="uService.user.password" type="password" placeholder="Password" name="psw" required>
 
-    <button type="submit" class="btn">Login</button>
-    <!--<button type="button" class="btn cancel" (click)="closeSignUp()">Close</button>-->
+    <button type="submit" class="btn" (click)="uService.signUpUser()">Submit</button>
   </form>
 </div>
     

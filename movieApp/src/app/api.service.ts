@@ -97,7 +97,7 @@ export class ApiService {
       this.getYoutubeVideo(title)
       this.loadInfo(poster, overview, title)
       this.getActors(id)
-      this.uService.signUpUser()
+      // this.uService.signUpUser()
   }
     
     
