@@ -113,17 +113,13 @@ export class UserService {
   }
   
   hideButton() {
-    // document.getElementById("signup").style.visibility = "hidden";
-    // document.getElementById("innerButton").style.transform = "translateX(90px)";
-    let parent = document.getElementById("innerButton")
-    let su = document.getElementById("signup")
-    parent.removeChild(su);
-    document.getElementById("login").innerHTML = "Sign Out";
+    document.getElementById("signup").style.visibility = "hidden";
+    document.getElementById("innerButton").style.transform = "translateX(90px)";
+    document.getElementById("login").innerHTML = '<a id="signup" (click)="uService.logOutUser()">Sign Out</a>'
 
   }
   
     openLogin() {
-      this.logOutUser()
     this.closeSignUp()
     document.getElementById("logInForm").style.display = "block";
 }

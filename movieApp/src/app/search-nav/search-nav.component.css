@@ -89,6 +89,9 @@ input {
         }
         
 #loggedinUserName {
+        position: absolute;
+        right: 17px;
+        top: 50px;
         margin-top: 17px;
         color: white;
         font-size: 17px;
