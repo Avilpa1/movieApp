@@ -1,4 +1,4 @@
-
+<a name="top"></a>
 <div class="outerDisplayContainer">
 <div class="displayContainer" >
 
@@ -22,11 +22,29 @@
 </div>
 
 <img id="poster" src="{{ maService.posterInset }}">
+
 <div id="title"></div>
 
+<div class="wrapper">
+    <div class="flexWapper">
+        <button id="rating" (click)="uService.logOutUser()"></button>
+<a id="userRating">User<br>Score</a>
+        <!--<div id="userRatings">User<br>Score</div>-->
+        <button id="fav" (click)="uService.logOutUser()">&#10084;</button>
+    </div>
+</div>
 
-<div id="overview"><p>test overview</p></div>
+<div id="overview"></div>
 
+<div class="similarContainer" *ngIf="maService.resultsSimilar">
+    <div *ngFor="let x of maService.resultsSimilar.results; let i = index">
+        <div *ngIf="i<5">
+            <div id="similarBox">
+                <a href="#top"><img id="actors" (click)="maService.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id, x )" src="https://image.tmdb.org/t/p/w500/{{ x.poster_path }}"></a>
+            </div>
+        </div> 
+    </div>
+</div>
 
 </div>
 </div>

@@ -16,6 +16,7 @@ export class ApiService {
   results: any;
   resultsYouTube: any;
   resultsActors: any;
+  resultsSimilar: any;
   api_key: string = 'c9bd3497000b71346920ffc2b16d1e37'
   youtube_key: string = 'AIzaSyClmq7p10MpgPEwc0HE-8V9fKd5uD_cRNM'
   youtubeUrl: string = 'https://www.googleapis.com/youtube/v3/search?maxResults=5&part=snippet&q='
@@ -46,6 +47,11 @@ export class ApiService {
     return this._http.get( this.mdbURL + "/movie/" + id + "/credits?api_key=" + this.api_key );
   }
   
+    getSimilarData(id) {
+      return this._http.get( this.mdbURL + '/movie/' + id + '/recommendations?api_key=' + this.api_key )
+    }
+  
+
       
     getPopData() {
     this.getPop()
@@ -54,7 +60,7 @@ export class ApiService {
         this.results = response
 
         let x = this.results.results[this.random]
-        this.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id)
+        this.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id, x)
       })
   }
   
@@ -66,7 +72,7 @@ export class ApiService {
         console.log(response)
         
         let x = this.results.results[0]
-        this.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id)
+        this.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id, x)
       })
   }
 
@@ -90,11 +96,21 @@ export class ApiService {
     })
   }
   
-  clickLoad(bdPath, title, overview, poster, id) {
+    getSimilar(id) {
+        this.getSimilarData(id)
+        .subscribe(
+        (response) =>  {
+        this.resultsSimilar = response
+        console.log(this.resultsSimilar)
+    })
+  }
+  
+  clickLoad(bdPath, title, overview, poster, id, fullResults) {
       this.bgChange(bdPath)
       this.getYoutubeVideo(title)
-      this.loadInfo(poster, overview, title)
+      this.loadInfo(poster, overview, title, fullResults)
       this.getActors(id)
+      this.getSimilar(id)
   }
     
     
@@ -104,11 +120,14 @@ export class ApiService {
       this.bg.style.backgroundImage = this.bg.style.backgroundImage = bdFull
   }
   
-  loadInfo(poster, overview, title) {
-      document.getElementById('title').innerHTML = title + '<button id="fav" (click)="uService.logOutUser()">fav</button>'
+  loadInfo(poster, overview, title, fullResults) {
+    
+      let year = fullResults.release_date.substr(0, 4)
+      document.getElementById('title').innerHTML = title + '(' + year + ')'
       this.posterInset = 'https://image.tmdb.org/t/p/w500' + poster
       document.getElementById('poster').innerHTML = this.posterInset
       document.getElementById('overview').innerHTML = overview
+      document.getElementById('rating').innerHTML = fullResults.vote_average
   }
   
 }

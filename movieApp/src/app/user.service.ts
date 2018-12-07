@@ -127,10 +127,10 @@ export class UserService {
     openLogin() {
     this.closeSignUp()
       var x = document.getElementById('logInForm');
-      if (x.style.display === 'none') {
-          x.style.display = 'block';
-      } else {
+      if (x.style.display === 'block') {
           x.style.display = 'none';
+      } else {
+          x.style.display = 'block';
       }
     // document.getElementById("logInForm").style.display = "block";
 }
@@ -142,10 +142,10 @@ export class UserService {
   openSignUp() {
     this.closeLogin()
       var x = document.getElementById('signUpForm');
-      if (x.style.display === 'none') {
-          x.style.display = 'block';
-      } else {
+      if (x.style.display === 'block') {
           x.style.display = 'none';
+      } else {
+          x.style.display = 'block';
       }
     // document.getElementById("signUpForm").style.display = "block";
 }

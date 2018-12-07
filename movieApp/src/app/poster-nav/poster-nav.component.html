@@ -3,7 +3,7 @@
       <div *ngFor="let x of maService.results.results; let i = index">
         <div class="gridItems">
         <span>
-        <img (click)="maService.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id)" src="https://image.tmdb.org/t/p/w500/{{ x.poster_path }}">
+        <img (click)="maService.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id, x )" src="https://image.tmdb.org/t/p/w500/{{ x.poster_path }}">
         </span>
         </div>
     </div>
