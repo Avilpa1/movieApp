@@ -5,18 +5,19 @@ import { ApiService } from './api.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
 
-  constructor(public _http : HttpClient) { }
+  constructor( public _http : HttpClient) { }
   
   logoutResult: any
   userDataResult: any
   
   user = {
-  "firstName": '',
-  "lastName": '',
-  "email": '',
-  "password": ''
+    "firstName": '',
+    "lastName": '',
+    "email": '',
+    "password": ''
   }
   
   userCred = {
@@ -52,13 +53,12 @@ export class UserService {
   }
   
   findUserData() {
-        this.findData(this.logInResult.userId, this.logInResult.token)
-        .subscribe(
-        (response) =>  {
+    this.findData(this.logInResult.userId, this.logInResult.token)
+      .subscribe( (response) =>  {
         this.userDataResult = response
         console.log(this.userDataResult)
         document.getElementById("userNameDisplay").innerHTML = 'Welcome, ' + this.userDataResult.firstName
-  })
+    })
   }
   
   logInUser() {
@@ -105,6 +105,10 @@ export class UserService {
     })
   }
   
+  saveFav () {
+    
+  }
+  
   clearForm() {
         this.user.firstName = '';
         this.user.lastName = '';
@@ -113,6 +117,7 @@ export class UserService {
   }
   
   hideButton() {
+    
     document.getElementById("signup").style.visibility = "hidden";
     document.getElementById("innerButton").style.transform = "translateX(90px)";
     document.getElementById("login").innerHTML = '<a id="signup" (click)="uService.logOutUser()">Sign Out</a>'
@@ -121,7 +126,13 @@ export class UserService {
   
     openLogin() {
     this.closeSignUp()
-    document.getElementById("logInForm").style.display = "block";
+      var x = document.getElementById('logInForm');
+      if (x.style.display === 'none') {
+          x.style.display = 'block';
+      } else {
+          x.style.display = 'none';
+      }
+    // document.getElementById("logInForm").style.display = "block";
 }
 
   closeLogin() {
@@ -130,7 +141,13 @@ export class UserService {
 
   openSignUp() {
     this.closeLogin()
-    document.getElementById("signUpForm").style.display = "block";
+      var x = document.getElementById('signUpForm');
+      if (x.style.display === 'none') {
+          x.style.display = 'block';
+      } else {
+          x.style.display = 'none';
+      }
+    // document.getElementById("signUpForm").style.display = "block";
 }
 
   closeSignUp() {

@@ -7,7 +7,7 @@ import { UserService } from './user.service';
 })
 export class ApiService {
 
-  constructor(public _http : HttpClient, private uService: UserService) { }
+  constructor( public _http : HttpClient, private uService: UserService ) { }
   
   mdbURL: string = 'https://api.themoviedb.org/3'
   ytURL
@@ -22,7 +22,7 @@ export class ApiService {
   youtubeVideoUrl: any
   bg: any
   inset: any
-  random = Math.floor((Math.random() * 20) + 1)
+  random = Math.floor(( Math.random() * 20) + 1)
   posterInset: any
   videoInset: any
 
@@ -31,21 +31,19 @@ export class ApiService {
   }
   
     getInfo() {
-    // return this._http.get("https://api.themoviedb.org/3/movie/76341?api_key=" + this.api_key );
-    // return this._http.get("https://api.themoviedb.org/3/search/movie?api_key=" + this.api_key + "&query=" + this.search + '&page=2');
-    return this._http.get(this.mdbURL + "/search/movie?api_key=" + this.api_key + "&query=" + this.search );
+    return this._http.get( this.mdbURL + "/search/movie?api_key=" + this.api_key + "&query=" + this.search );
   }
   
     getPop() {
-    return this._http.get(this.mdbURL + "/movie/popular?api_key=" + this.api_key + "&language=en-US&page=1");
+    return this._http.get( this.mdbURL + "/movie/popular?api_key=" + this.api_key + "&language=en-US&page=1" );
   }
       
     getYoutube(title) {
-    return this._http.get(this.youtubeUrl + title + " trailer" + "&key=" + this.youtube_key)
+    return this._http.get( this.youtubeUrl + title + " trailer" + "&key=" + this.youtube_key )
   }
   
     getActorsData(id) {
-    return this._http.get(this.mdbURL + "/movie/" + id + "/credits?api_key=" + this.api_key);
+    return this._http.get( this.mdbURL + "/movie/" + id + "/credits?api_key=" + this.api_key );
   }
   
       
@@ -97,7 +95,6 @@ export class ApiService {
       this.getYoutubeVideo(title)
       this.loadInfo(poster, overview, title)
       this.getActors(id)
-      // this.uService.signUpUser()
   }
     
     
@@ -108,7 +105,7 @@ export class ApiService {
   }
   
   loadInfo(poster, overview, title) {
-      document.getElementById('title').innerHTML = title
+      document.getElementById('title').innerHTML = title + '<button id="fav" (click)="uService.logOutUser()">fav</button>'
       this.posterInset = 'https://image.tmdb.org/t/p/w500' + poster
       document.getElementById('poster').innerHTML = this.posterInset
       document.getElementById('overview').innerHTML = overview
