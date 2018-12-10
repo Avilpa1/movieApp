@@ -26,7 +26,8 @@ export class ApiService {
   random = Math.floor(( Math.random() * 20) + 1)
   posterInset: any
   videoInset: any
-
+  year:any
+  fullResults: any
   
     ngOnInit() {
   }
@@ -111,6 +112,7 @@ export class ApiService {
       this.loadInfo(poster, overview, title, fullResults)
       this.getActors(id)
       this.getSimilar(id)
+      this.fullResults = fullResults
   }
     
     
@@ -121,13 +123,13 @@ export class ApiService {
   }
   
   loadInfo(poster, overview, title, fullResults) {
-    
-      let year = fullResults.release_date.substr(0, 4)
-      document.getElementById('title').innerHTML = title + '(' + year + ')'
+      this.year = fullResults.release_date.substr(0, 4)
+      document.getElementById('title').innerHTML = title + '<a style="font-size:30px; opacity:0.6;"> (' + this.year + ')</a>'
       this.posterInset = 'https://image.tmdb.org/t/p/w500' + poster
       document.getElementById('poster').innerHTML = this.posterInset
       document.getElementById('overview').innerHTML = overview
       document.getElementById('rating').innerHTML = fullResults.vote_average
+      document.getElementById('liked').style.color = 'inherit';
   }
   
 }

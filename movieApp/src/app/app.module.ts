@@ -10,6 +10,7 @@ import { PosterNavComponent } from './poster-nav/poster-nav.component';
 import { MovieDisplayComponent } from './movie-display/movie-display.component';
 import { SearchNavComponent } from './search-nav/search-nav.component';
 
+import { routes } from './app.router';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SearchNavComponent } from './search-nav/search-nav.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    routes
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

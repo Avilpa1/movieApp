@@ -14,7 +14,7 @@
     color: white;
     padding-bottom: 10px;
     border-radius: 10px;
-    }
+}
 
 #poster {
     grid-column: 1;
@@ -26,18 +26,18 @@
     width: 90%;
     height: auto;
     animation: fadeIn 1s;
-    }
+}
         
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity:1 ;}
-    }
+}
     
 #youTube {
     justify-self: center;
     padding-left: 15%;
     padding-top: 20px;
-    }
+}
     
 #title {
     grid-column: 2;
@@ -50,7 +50,11 @@
     font-family: 'Source Sans Pro', Arial, sans-serif;
     line-height: 1.1em;
     font-weight: 700;
-    }
+}
+    
+#year {
+    font-size: 15px;
+}
     
 #overview {
     grid-column: 2;
@@ -70,14 +74,14 @@
     margin-right: 2%;
     height: 100%;
     animation: fadeIn 1s;
-    }
+}
     
 #similarBox {
     background-color: rgba(79, 79, 79, 0.5);
     margin-right: 5%;
     border-radius: 3px;
    height: auto;
-    }    
+}    
 
 .actorContainer {
     grid-column: 2;
@@ -88,12 +92,12 @@
     margin-right: 2%;
     height: 100%;
     animation: fadeIn 1s;
-    }
+}
         
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity:1 ;}
-    }
+}
 
 #actorBox {
     background-color: rgba(79, 79, 79, 0.5);
@@ -101,12 +105,12 @@
     border-radius: 3px;
    animation: fadeIn 1s;
    height: 320px;
-    }
+}
         
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity:1 ;}
-    }
+}
 
 #actors {
 
@@ -139,7 +143,7 @@
 }
 
 #fav {
-align-items: flex-end;
+    align-items: flex-end;
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -148,6 +152,7 @@ align-items: flex-end;
     border: 2px solid white;
     color: white;
     margin-left: 20px;
+    outline: none;
 }
 
 #fav:hover {
@@ -156,8 +161,11 @@ align-items: flex-end;
     color: black;
 }
 
-#rating{
+#liked {
+    color: inherit;
+}
 
+#rating{
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -181,7 +189,7 @@ align-items: flex-end;
     font-family: 'Source Sans Pro', Arial, sans-serif;
     font-weight: 700;
     margin-left: 6px;
-        margin-top: 11px;
+    margin-top: 11px;
     line-height: 1em;
 }
 
@@ -219,8 +227,6 @@ align-items: flex-end;
         grid-column: 1;
         grid-row: 3;
     }
-    
-
 }
 
 .video-container {
@@ -241,6 +247,3 @@ align-items: flex-end;
 	width:100%;
 	height:100%;
 }
-
-
-

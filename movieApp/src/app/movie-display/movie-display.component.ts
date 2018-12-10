@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { DomSanitizer } from '@angular/platform-browser';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-movie-display',
@@ -9,9 +9,23 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class MovieDisplayComponent implements OnInit {
 
-  constructor(public _api : ApiService, private maService: ApiService, public sanitizer: DomSanitizer) { }
+  constructor( private maService: ApiService, private uService: UserService) { }
 
   ngOnInit() {
   }
 
+  uService.clickLike() {
+    this.uService.favObj.title = this.maService.fullResults.title
+    this.uService.favObj.movieId = '' + this.maService.fullResults.id + ''
+    this.uService.favObj.userId = this.uService.activeId
+    
+    this.uService.saveFav()
+      var x = document.getElementById('liked');
+      if (x.style.color === 'red') {
+          x.style.color = 'inherit';
+      } else {
+          x.style.color = 'red';
+      }
+      console.log(this.uService.favObj)
+  }
 }
