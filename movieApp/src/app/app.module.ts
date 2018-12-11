@@ -11,13 +11,17 @@ import { MovieDisplayComponent } from './movie-display/movie-display.component';
 import { SearchNavComponent } from './search-nav/search-nav.component';
 
 import { routes } from './app.router';
+import { HomePageComponent } from './home-page/home-page.component';
+import { MainDisplayComponent } from './main-display/main-display.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PosterNavComponent,
     MovieDisplayComponent,
-    SearchNavComponent
+    SearchNavComponent,
+    HomePageComponent,
+    MainDisplayComponent
   ],
   imports: [
     BrowserModule,

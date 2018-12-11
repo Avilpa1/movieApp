@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor( public _http : HttpClient, private uService: UserService ) { }
+  constructor( public _http : HttpClient, private uService: UserService, private router: Router ) { }
   
   mdbURL: string = 'https://api.themoviedb.org/3'
   ytURL
@@ -66,6 +67,7 @@ export class ApiService {
   }
   
     getData() {
+      this.router.navigate(['main'])
     this.getInfo()
     .subscribe(
       (response) =>  {
@@ -73,7 +75,10 @@ export class ApiService {
         console.log(response)
         
         let x = this.results.results[0]
+        
+      
         this.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id, x)
+        
       })
   }
 

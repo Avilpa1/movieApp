@@ -18,6 +18,7 @@ export class MovieDisplayComponent implements OnInit {
     this.uService.favObj.title = this.maService.fullResults.title
     this.uService.favObj.movieId = '' + this.maService.fullResults.id + ''
     this.uService.favObj.userId = this.uService.activeId
+    this.uService.favObj.fullResults = this.maService.fullResults
     
     this.uService.saveFav()
       var x = document.getElementById('liked');
@@ -28,4 +29,8 @@ export class MovieDisplayComponent implements OnInit {
       }
       console.log(this.uService.favObj)
   }
+  
+  likeCheck() {
+    
+    }
 }

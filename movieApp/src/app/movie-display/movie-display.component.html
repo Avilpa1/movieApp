@@ -32,7 +32,7 @@
             <div *ngFor="let x of maService.resultsSimilar.results; let i = index">
                 <div *ngIf="i<5">
                     <div id="similarBox">
-                        <a href="#top"><img id="actors" (click)="maService.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id, x )" src="https://image.tmdb.org/t/p/w500/{{ x.poster_path }}"></a>
+                        <a><img id="actors" (click)="maService.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id, x )" src="https://image.tmdb.org/t/p/w500/{{ x.poster_path }}"></a>
                     </div>
                 </div> 
             </div>

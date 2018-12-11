@@ -31,7 +31,8 @@ export class UserService {
   favObj = {
     "title": '',
     "movieId": '',
-    "userId": ''
+    "userId": '',
+    "fullResults": ''
   }
   
   signUpResult: any;
