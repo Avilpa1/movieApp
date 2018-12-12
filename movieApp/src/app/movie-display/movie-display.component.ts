@@ -30,7 +30,5 @@ export class MovieDisplayComponent implements OnInit {
       console.log(this.uService.favObj)
   }
   
-  likeCheck() {
-    
-    }
+
 }

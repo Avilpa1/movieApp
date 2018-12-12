@@ -142,6 +142,8 @@
     
 }
 
+/*======Buttons======*/
+
 #fav {
     align-items: flex-end;
     border-radius: 50%;
@@ -193,6 +195,8 @@
     line-height: 1em;
 }
 
+/*======Media Queryies======*/
+
 @media screen and (max-width: 700px) {
     .displayContainer {
         grid-template-columns: auto;
@@ -228,6 +232,8 @@
         grid-row: 3;
     }
 }
+
+/*======Youtube======*/
 
 .video-container {
     grid-column: 2;

@@ -15,7 +15,24 @@ export class SearchNavComponent implements OnInit {
     this.maService.getPopData()
   }
   
+  ngAfterViewInit() {
+    likeCheck()
+  }
 
-  
+
+    likeCheck() {
+      console.log(this.maService.fullResults.id)
+      // console.log(this.uService.getFavResult[3].movieId)
+      
+      for(let x=0; x < this.uService.getFavResult.length; x++ ) {
+      
+        if (this.maService.fullResults.id == this.uService.getFavResult[x].movieId ) {
+          console.log('liked')
+          document.getElementById('liked').style.color = 'red'
+        } else { 
+          console.log('not liked')
+        }
+      }
+    }
 
 }

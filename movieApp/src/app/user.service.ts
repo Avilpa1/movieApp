@@ -13,6 +13,7 @@ export class UserService {
   logoutResult: any
   userDataResult: any
   postFavResult: any
+  getFavResult: any
   activeId = window.sessionStorage.getItem("userId")
   activeToken = sessionStorage.getItem("token")
   
@@ -80,8 +81,7 @@ export class UserService {
   }
   
   logInUser() {
-      this.closeLogin()
-      
+    this.closeLogin()
       this.logIn()
         .subscribe( (response) =>  {
         this.logInResult = response
@@ -178,12 +178,13 @@ export class UserService {
   getFav() {
     this.getFavData(this.activeId, this.activeToken)
       .subscribe( (response) =>  {
-        let getFavResult = response
-        console.log(getFavResult)
+        this.getFavResult = response
+        console.log(this.getFavResult)
       
     })
-    
   }
+  
+  
 }
 
 

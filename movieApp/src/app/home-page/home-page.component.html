@@ -1,3 +1,11 @@
-<p>
-  home-page works!
-</p>
+<div class="outter">
+<div class='gridContainer' *ngIf="maService.results">
+    <div *ngFor="let x of maService.results.results; let i = index">
+      <div class="gridItems">
+        <span>
+          <img (click)="maService.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id, x )" src="https://image.tmdb.org/t/p/w500/{{ x.poster_path }}">
+        </span>
+      </div>
+    </div>
+</div>
+</div>

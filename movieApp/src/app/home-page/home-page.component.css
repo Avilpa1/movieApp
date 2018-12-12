@@ -1,0 +1,25 @@
+.outter {
+        position: absolute;
+    left: 0;
+    width: 100%;
+    padding-top: 110px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+.gridContainer {
+
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
+        padding-left: 10%;
+    padding-right: 10%;
+    
+}
+
+img {
+      height: 350px;
+      padding-bottom: 30px;
+      padding-left: 13%;
+    
+}

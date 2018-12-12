@@ -21,14 +21,14 @@ export class ApiService {
   api_key: string = 'c9bd3497000b71346920ffc2b16d1e37'
   youtube_key: string = 'AIzaSyClmq7p10MpgPEwc0HE-8V9fKd5uD_cRNM'
   youtubeUrl: string = 'https://www.googleapis.com/youtube/v3/search?maxResults=5&part=snippet&q='
-  youtubeVideoUrl: any
-  bg: any
-  inset: any
+  youtubeVideoUrl: any;
+  bg: any;
+  inset: any;
   random = Math.floor(( Math.random() * 20) + 1)
-  posterInset: any
-  videoInset: any
-  year:any
-  fullResults: any
+  posterInset: any;
+  videoInset: any;
+  year: any;
+  fullResults: any;
   
     ngOnInit() {
   }
@@ -53,39 +53,35 @@ export class ApiService {
       return this._http.get( this.mdbURL + '/movie/' + id + '/recommendations?api_key=' + this.api_key )
     }
   
-
-      
-    getPopData() {
-    this.getPop()
+  
+  getPopData() {
+  this.getPop()
     .subscribe(
       (response) =>  {
         this.results = response
-
+  
         let x = this.results.results[this.random]
         this.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id, x)
-      })
+    })
   }
   
-    getData() {
-      this.router.navigate(['main'])
+  getData() {
+    this.router.navigate(['main'])
+      
     this.getInfo()
     .subscribe(
       (response) =>  {
         this.results = response
         console.log(response)
-        
         let x = this.results.results[0]
-        
-      
         this.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id, x)
-        
-      })
+    })
   }
 
   getYoutubeVideo(title) {
-        this.getYoutube(title)
-        .subscribe(
-        (response) =>  {
+    this.getYoutube(title)
+    .subscribe(
+      (response) =>  {
         this.resultsYouTube = response
         
         this.youtubeVideoUrl = "https://www.youtube.com/embed/" + this.resultsYouTube.items[0].id.videoId
@@ -95,16 +91,16 @@ export class ApiService {
   }
   
   getActors(id) {
-        this.getActorsData(id)
-        .subscribe(
+    this.getActorsData(id)
+      .subscribe(
         (response) =>  {
         this.resultsActors = response
     })
   }
   
-    getSimilar(id) {
-        this.getSimilarData(id)
-        .subscribe(
+  getSimilar(id) {
+    this.getSimilarData(id)
+      .subscribe(
         (response) =>  {
         this.resultsSimilar = response
         console.log(this.resultsSimilar)
@@ -120,6 +116,11 @@ export class ApiService {
       this.fullResults = fullResults
   }
     
+  loadPage() {
+    this.router.navigate(['main'])
+    
+    console.log("test")
+  }
     
   bgChange(bdPath) {
       this.bg = document.getElementById('background_wrap');
@@ -136,5 +137,4 @@ export class ApiService {
       document.getElementById('rating').innerHTML = fullResults.vote_average
       document.getElementById('liked').style.color = 'inherit';
   }
-  
 }
