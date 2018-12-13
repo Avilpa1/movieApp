@@ -1,25 +1,39 @@
 .outter {
-        position: absolute;
+    position: absolute;
     left: 0;
+    top: 0;
     width: 100%;
-    padding-top: 110px;
+    padding-top: 140px;
     background-color: rgba(0, 0, 0, 0.7);
 }
 
 
 .gridContainer {
-
     display: grid;
     grid-template-columns: auto auto auto;
     grid-template-rows: auto;
-        padding-left: 10%;
-    padding-right: 10%;
+    justify-items: center;
+    padding-left: 20%;
+    padding-right: 20%;
     
 }
 
 img {
-      height: 350px;
-      padding-bottom: 30px;
-      padding-left: 13%;
-    
+    height: 350px;
+    border-radius:48px;
+    box-shadow:  0 0 0 2px #000;
+    cursor:pointer;
+    transition: transform .2s;
 }
+
+img:hover {
+    transform: scale(1.1); 
+}
+
+.gridItems {
+    padding-bottom: 50px;
+    padding-right: 25px;
+    padding-left: 25px
+}
+
+@media
