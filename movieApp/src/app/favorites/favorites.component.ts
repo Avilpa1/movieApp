@@ -3,23 +3,16 @@ import { ApiService } from '../api.service';
 import { UserService } from '../user.service';
 
 @Component({
-  selector: 'app-search-nav',
-  templateUrl: './search-nav.component.html',
-  styleUrls: ['./search-nav.component.css']
+  selector: 'app-favorites',
+  templateUrl: './favorites.component.html',
+  styleUrls: ['./favorites.component.css']
 })
-export class SearchNavComponent implements OnInit {
+export class FavoritesComponent implements OnInit {
 
   constructor(private maService: ApiService, private uService: UserService) { }
 
   ngOnInit() {
-    this.maService.getPopData()
-  }
-  
-  ngAfterViewInit() {
 
   }
-
-
-
 
 }

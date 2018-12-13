@@ -126,7 +126,6 @@ export class UserService {
       .subscribe( (response) =>  {
         this.postFavResult = response
         console.log(this.postFavResult)
-      
     })
     
   }

@@ -1,0 +1,13 @@
+<div class="outter">
+  <div class='gridContainer' *ngIf="uService.getFavResult">
+    <div *ngFor="let x of uService.getFavResult; let i = index">
+      <div *ngIf="i<9">
+        <div class="gridItems">
+          <span>
+            <img (click)="maService.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id, x )" src="https://image.tmdb.org/t/p/w500/{{ x.fullResults.poster_path }}">
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 <div class="navContainer">
-  <!--<button (click)="likeCheck()">favs</button>-->
+<button id="favbutton" routerLink="/fav">fav</button>
   <div class="logo">
     <a routerLink='/home'>
 		  <img id="logo" src="https://www.themoviedb.org/assets/1/v4/logos/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg">
@@ -7,7 +7,7 @@
 	</div> 
   <div class="searchBar">
     <input [(ngModel)]="maService.search" (keyup.enter)="maService.getData()">
-    <button id="searchButton" (click)="maService.getData()">Search</button>
+    <button id="searchButton" (click)="maService.getData()"><img id="searchButton" src="https://www.whitepages.com/assets/wp-icons-svg/search-dusk-24-557958f629f82b50168b26257601c01844a5c213eb37719118c39a4f3c0cc658.svg"></button>
   </div>
 	<div class="buttons">
 	  <div id="innerButton">

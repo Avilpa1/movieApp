@@ -13,6 +13,7 @@ import { SearchNavComponent } from './search-nav/search-nav.component';
 import { routes } from './app.router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MainDisplayComponent } from './main-display/main-display.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MainDisplayComponent } from './main-display/main-display.component';
     MovieDisplayComponent,
     SearchNavComponent,
     HomePageComponent,
-    MainDisplayComponent
+    MainDisplayComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,

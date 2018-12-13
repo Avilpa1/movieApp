@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
+import { UserService } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -108,33 +109,45 @@ export class ApiService {
   }
   
   clickLoad(bdPath, title, overview, poster, id, fullResults) {
-      this.bgChange(bdPath)
-      this.getYoutubeVideo(title)
-      this.loadInfo(poster, overview, title, fullResults)
-      this.getActors(id)
-      this.getSimilar(id)
-      this.fullResults = fullResults
+    this.loadPage()
+    this.bgChange(bdPath)
+    this.getYoutubeVideo(title)
+    this.loadInfo(poster, overview, title, fullResults)
+    this.getActors(id)
+    this.getSimilar(id)
+    this.fullResults = fullResults
+    this.likeCheck()
   }
     
   loadPage() {
     this.router.navigate(['main'])
-    
-    console.log("test")
   }
     
   bgChange(bdPath) {
-      this.bg = document.getElementById('background_wrap');
-      let bdFull = 'url(https://image.tmdb.org/t/p/w1280/' + bdPath + ')'
-      this.bg.style.backgroundImage = this.bg.style.backgroundImage = bdFull
+    this.bg = document.getElementById('background_wrap');
+    let bdFull = 'url(https://image.tmdb.org/t/p/w1280/' + bdPath + ')'
+    this.bg.style.backgroundImage = this.bg.style.backgroundImage = bdFull
   }
   
   loadInfo(poster, overview, title, fullResults) {
-      this.year = fullResults.release_date.substr(0, 4)
-      document.getElementById('title').innerHTML = title + '<a style="font-size:30px; opacity:0.6;"> (' + this.year + ')</a>'
-      this.posterInset = 'https://image.tmdb.org/t/p/w500' + poster
-      document.getElementById('poster').innerHTML = this.posterInset
-      document.getElementById('overview').innerHTML = overview
-      document.getElementById('rating').innerHTML = fullResults.vote_average
-      document.getElementById('liked').style.color = 'inherit';
+    this.year = fullResults.release_date.substr(0, 4)
+    document.getElementById('title').innerHTML = title + '<a style="font-size:30px; opacity:0.6;"> (' + this.year + ')</a>'
+    this.posterInset = 'https://image.tmdb.org/t/p/w500' + poster
+    document.getElementById('poster').innerHTML = this.posterInset
+    document.getElementById('overview').innerHTML = overview
+    document.getElementById('rating').innerHTML = fullResults.vote_average
+    document.getElementById('liked').style.color = 'inherit';
+  }
+  
+  likeCheck() {
+    console.log(this.fullResults.id)
+      for(let x=0; x < this.uService.getFavResult.length; x++ ) {
+        if (this.fullResults.id == this.uService.getFavResult[x].movieId ) {
+          console.log('liked')
+          document.getElementById('liked').style.color = 'red'
+        } else { 
+          console.log('not liked')
+      }
+    }
   }
 }
