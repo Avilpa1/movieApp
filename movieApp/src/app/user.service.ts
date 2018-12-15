@@ -14,8 +14,8 @@ export class UserService {
   userDataResult: any
   postFavResult: any
   getFavResult: any
-  activeId = sessionStorage.getItem("userId")
-  activeToken = sessionStorage.getItem("token")
+  activeId: any 
+  activeToken: any
   
   user = {
     "firstName": '',
@@ -91,6 +91,10 @@ export class UserService {
         window.sessionStorage.setItem('token', this.logInResult.token);
         window.sessionStorage.setItem('userId', this.logInResult.userId);
         
+        this.activeId = this.logInResult.userId
+        this.activeToken = this.logInResult.token
+        console.log(this.activeId + " " + this.activeToken)
+        
         this.findUserData()
         this.getFav()
         this.hideButton()
@@ -105,6 +109,8 @@ export class UserService {
         this.logoutResult = response
   
         window.sessionStorage.clear()
+        this.activeId = '';
+        this.activeToken '';
       
         document.getElementById("userNameDisplay").innerHTML = '<a id="userNameDisplay" (click)="uService.logOutUser()"></a>'
         console.log('User logged out')

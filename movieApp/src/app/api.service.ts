@@ -114,12 +114,13 @@ export class ApiService {
     this.getActors(id)
     this.getSimilar(id)
     this.fullResults = fullResults
-    // this.likeCheck()
     this.year = fullResults.release_date.substr(0, 4)
+    this.likeCheck()
   }
     
   loadPage() {
     this.router.navigate(['main'])
+    window.scroll(0,0);
   }
     
   bgChange(bdPath) {
@@ -135,15 +136,16 @@ export class ApiService {
   //   // document.getElementById('poster').innerHTML = this.posterInset
   //   // document.getElementById('overview').innerHTML = overview
   //   // document.getElementById('rating').innerHTML = fullResults.vote_average
-  //   // document.getElementById('liked').style.color = 'inherit';
   // }
   
   likeCheck() {
+    document.getElementById('fav').style.color = 'inherit';
     console.log(this.fullResults.id)
+    console.log(document.getElementById('fav').style.color)
       for(let x=0; x < this.uService.getFavResult.length; x++ ) {
-        if (this.fullResults.id == this.uService.getFavResult[x].movieId ) {
+        if (this.fullResults.id || this.x.results.id == this.uService.getFavResult[x].movieId ) {
           console.log('liked')
-          document.getElementById('liked').style.color = 'red'
+          document.getElementById('fav').style.color = 'red'
         } else { 
           console.log('not liked')
       }
