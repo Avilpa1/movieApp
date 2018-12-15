@@ -4,7 +4,7 @@
       <div *ngIf="i<9">
         <div class="gridItems">
           <span>
-            <img (click)="maService.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id, x )" src="https://image.tmdb.org/t/p/w500/{{ x.fullResults.poster_path }}">
+            <img (click)="maService.clickLoad( x.results.backdrop_path, x.results.title, x.results.overview, x.results.poster_path, x.results.id, x.results )" src="https://image.tmdb.org/t/p/w500/{{ x.results.poster_path }}">
           </span>
         </div>
       </div>

@@ -51,9 +51,11 @@
     line-height: 1.1em;
     font-weight: 700;
 }
+
     
 #year {
-    font-size: 15px;
+    font-size:30px; 
+    opacity:0.6;
 }
     
 #overview {
@@ -182,6 +184,7 @@
     border: 4px solid #32B875;
     color: black;
 }
+
 
 #userRating {
 

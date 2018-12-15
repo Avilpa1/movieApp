@@ -14,7 +14,7 @@ export class UserService {
   userDataResult: any
   postFavResult: any
   getFavResult: any
-  activeId = window.sessionStorage.getItem("userId")
+  activeId = sessionStorage.getItem("userId")
   activeToken = sessionStorage.getItem("token")
   
   user = {
@@ -33,7 +33,7 @@ export class UserService {
     "title": '',
     "movieId": '',
     "userId": '',
-    "fullResults": ''
+    "results": ''
   }
   
   signUpResult: any;
@@ -122,6 +122,7 @@ export class UserService {
   }
   
   saveFav () {
+    console.log(this.activeId + " " + this.activeToken)
     this.postFav(this.activeId, this.activeToken)
       .subscribe( (response) =>  {
         this.postFavResult = response

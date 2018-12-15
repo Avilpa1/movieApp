@@ -18,16 +18,16 @@
         <div class="video-container" id="video-container">    
             <div class="videoBox" id="youTube"></div>
         </div>
-            <img id="poster" src="{{ maService.posterInset }}">
-        <div id="title"></div>
+            <img id="poster" src="https://image.tmdb.org/t/p/w500/{{ maService.fullResults.poster_path }}">
+        <div id="title">{{ maService.fullResults.title }}<a id="year">({{ maService.year }})</a></div>
         <div class="wrapper">
             <div class="flexWapper">
-                <button id="rating" (click)="uService.logOutUser()"></button>
+                <button id="rating">{{ maService.fullResults.vote_average }}</button>
                     <a id="userRating">User<br>Score</a>
                 <button id="fav" (click)="clickLike()"><a id="liked">&#10084;</a></button>
             </div>
         </div>
-        <div id="overview"></div>
+        <div id="overview">{{ maService.fullResults.overview }}</div>
         <div class="similarContainer" *ngIf="maService.resultsSimilar">
             <div *ngFor="let x of maService.resultsSimilar.results; let i = index">
                 <div *ngIf="i<5">
