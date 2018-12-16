@@ -14,7 +14,7 @@ export class MovieDisplayComponent implements OnInit {
   // ngOnInit() {
   // }
 
-  uService.clickLike() {
+  clickLike() {
     this.uService.favObj.title = this.maService.fullResults.title;
     this.uService.favObj.movieId = '' + this.maService.fullResults.id + '';
     this.uService.favObj.userId = this.uService.activeId;
@@ -27,7 +27,6 @@ export class MovieDisplayComponent implements OnInit {
       } else {
           x.style.color = 'red';
       }
-      // console.log(this.uService.favObj)
   }
   
 

@@ -30,6 +30,7 @@ export class ApiService {
   videoInset: any;
   year: any;
   fullResults: any;
+  likedVal: any;
   
     ngOnInit() {
   }
@@ -139,16 +140,15 @@ export class ApiService {
   // }
   
   likeCheck() {
-    document.getElementById('fav').style.color = 'inherit';
-    console.log(this.fullResults.id)
-    console.log(document.getElementById('fav').style.color)
       for(let x=0; x < this.uService.getFavResult.length; x++ ) {
-        if (this.fullResults.id || this.x.results.id == this.uService.getFavResult[x].movieId ) {
-          console.log('liked')
-          document.getElementById('fav').style.color = 'red'
+        if (this.fullResults.id == this.uService.getFavResult[x].movieId ) {
+          this.likedVal = 'true'
+          break
         } else { 
-          console.log('not liked')
+          this.likedVal = 'false'
       }
     }
   }
+  
+  
 }

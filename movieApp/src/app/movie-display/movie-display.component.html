@@ -24,7 +24,13 @@
             <div class="flexWapper">
                 <button id="rating">{{ maService.fullResults.vote_average }}</button>
                     <a id="userRating">User<br>Score</a>
-                <button id="fav" (click)="clickLike()"><a id="liked">&#10084;</a></button>
+                    <div>
+                    <button id="fav" (click)="clickLike()">
+                        <div [ngStyle]="{'color':maService.likedVal ===  'true' ? 'red' : 'inherit' }">
+                            <a id="liked">&#10084;</a>
+                        </div>
+                    </button>
+                </div>
             </div>
         </div>
         <div id="overview">{{ maService.fullResults.overview }}</div>
@@ -39,3 +45,5 @@
         </div>
     </div>
 </div>
+
+
