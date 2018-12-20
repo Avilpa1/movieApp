@@ -75,6 +75,18 @@ export class UserService {
     return this._http.get( this.findDataURL + id + '/favs?access_token=' + token )
   }
   
+  delFavdata(id, token) {
+    return this._http.delete( 'http://meanstack-2018-5-paul-phortonssf.c9users.io:8080/api/favs/' + id + '?access_token=' + token )
+  }
+  
+  delFav(id) {
+    this.delFavdata(id, this.logInResult.token)
+      .subscribe( (response) =>  {
+        this.userDataResult = response
+        this.getFav()
+    })
+  }
+  
   findUserData() {
     this.findData(this.logInResult.userId, this.logInResult.token)
       .subscribe( (response) =>  {
@@ -95,6 +107,7 @@ export class UserService {
         
         window.sessionStorage.setItem('token', this.logInResult.token);
         window.sessionStorage.setItem('userId', this.logInResult.userId);
+        console.log(this.logInResult.userId)
         
         this.activeId = this.logInResult.userId
         this.activeToken = this.logInResult.token

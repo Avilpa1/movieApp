@@ -31,6 +31,8 @@ export class ApiService {
   fullResults: any;
   likedVal: any;
   
+    ngOnInit() {
+  }
   
     getInfo() {
     return this._http.get( this.mdbURL + "/search/movie?api_key=" + this.api_key + "&query=" + this.search );
@@ -58,8 +60,17 @@ export class ApiService {
     .subscribe(
       (response) =>  {
         this.results = response
-        let x = this.results.results[Math.floor(( Math.random() * 20) + 1)]
+        let randomID = Math.floor(( Math.random() * 20) + 1)
+        let x = this.results.results[randomID]
         this.bgChange(x.backdrop_path)
+        window.scroll(0,0);  
+  //       bgChangeRandom(bdPath) {
+  //           let bdPath = this.results.results[3].backdrop_path
+  //           this.bg = document.getElementById('background_wrap');
+  //           let bdFull = 'url(https://image.tmdb.org/t/p/w1280/' + bdPath + ')'
+  //           this.bg.style.backgroundImage = this.bg.style.backgroundImage = bdFull
+  // }
+  //       window.setInterval(bgChangeRandom(x.backdrop_path), 3000)
     })
   }
   
@@ -122,7 +133,6 @@ export class ApiService {
   }
     
   bgChange(bdPath) {
-    console.log(bdPath)
     this.bg = document.getElementById('background_wrap');
     let bdFull = 'url(https://image.tmdb.org/t/p/w1280/' + bdPath + ')'
     this.bg.style.backgroundImage = this.bg.style.backgroundImage = bdFull
