@@ -4,6 +4,7 @@
       <div *ngIf="i<9">
         <div class="gridItems">
           <span>
+            <!--<a id="delFav">&#x2716;</a>-->
             <img (click)="maService.clickLoad( x.results.backdrop_path, x.results.title, x.results.overview, x.results.poster_path, x.results.id, x.results )" src="https://image.tmdb.org/t/p/w500/{{ x.results.poster_path }}">
           </span>
         </div>

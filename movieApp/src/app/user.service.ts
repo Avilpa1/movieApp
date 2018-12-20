@@ -39,6 +39,10 @@ export class UserService {
   signUpResult: any;
   logInResult: any;
   userName: any = ''
+  userLoggedIn: any = ''
+  loginButton: any = 'Log in'
+  transformVal: any = 'false'
+  signUpHidden: any = 'false'
   
   dbURL: string = "http://meanstack-2018-5-paul-phortonssf.c9users.io:8080/api/AppUsers"
   lgURL: string = "http://meanstack-2018-5-paul-phortonssf.c9users.io:8080/api/AppUsers/logout?access_token="
@@ -76,7 +80,8 @@ export class UserService {
       .subscribe( (response) =>  {
         this.userDataResult = response
         console.log(this.userDataResult)
-        document.getElementById("userNameDisplay").innerHTML = 'Welcome, ' + this.userDataResult.firstName
+        // document.getElementById("userNameDisplay").innerHTML = 'Welcome, ' + this.userDataResult.firstName
+        this.userLoggedIn = 'Welcome, ' + this.userDataResult.firstName
     })
   }
   
@@ -93,7 +98,6 @@ export class UserService {
         
         this.activeId = this.logInResult.userId
         this.activeToken = this.logInResult.token
-        console.log(this.activeId + " " + this.activeToken)
         
         this.findUserData()
         this.getFav()
@@ -107,12 +111,17 @@ export class UserService {
       .subscribe(
         (response) =>  {
         this.logoutResult = response
-  
+        this.closeLogin()
         window.sessionStorage.clear()
         this.activeId = '';
-        this.activeToken '';
+        this.activeToken = '';
       
-        document.getElementById("userNameDisplay").innerHTML = '<a id="userNameDisplay" (click)="uService.logOutUser()"></a>'
+        // document.getElementById("userNameDisplay").innerHTML = '<a id="userNameDisplay" (click)="uService.logOutUser()"></a>'
+        this.userLoggedIn = ''
+        this.loginButton = 'Log in'
+        this.transformVal = 'false'
+        this.signUpHidden = 'false'
+        
         console.log('User logged out')
     })
   }
@@ -147,9 +156,12 @@ export class UserService {
   }
   
   hideButton() {
-    document.getElementById("signup").style.visibility = "hidden";
-    document.getElementById("innerButton").style.transform = "translateX(90px)";
-    document.getElementById("login").innerHTML = '<a id="signup" (click)="uService.logOutUser()">Sign Out</a>'
+    // document.getElementById("signup").style.visibility = "hidden";
+    // document.getElementById("innerButton").style.transform = "translateX(90px)";
+    // document.getElementById("login").innerHTML = '<a id="signup" (click)="uService.logOutUser()">Sign Out</a>'
+    this.signUpHidden = 'true'
+    this.loginButton = 'Sign Out'
+    this.transformVal = 'true'
 
   }
   
@@ -186,14 +198,17 @@ export class UserService {
       .subscribe( (response) =>  {
         this.getFavResult = response
         console.log(this.getFavResult)
-      
     })
   }
   
+  loginCheck() {
+    if (this.signUpHidden == 'true') {
+      this.logOutUser()
+      return
+    } else {
+      this.openLogin()
+    }
+  }
   
 }
-
-
-
-
 

@@ -3,6 +3,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
+import { ApiService } from './app/api.service';
+import { UserService } from './app/user.service';
 
 if (environment.production) {
   enableProdMode();
@@ -10,3 +12,9 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
+  
+export class index {
+  
+  constructor( private maService: ApiService, private uService: UserService) { }
+
+}

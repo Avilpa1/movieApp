@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
-import { UserService } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'

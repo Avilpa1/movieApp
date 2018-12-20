@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
-import { UserService } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -32,8 +31,6 @@ export class ApiService {
   fullResults: any;
   likedVal: any;
   
-    ngOnInit() {
-  }
   
     getInfo() {
     return this._http.get( this.mdbURL + "/search/movie?api_key=" + this.api_key + "&query=" + this.search );
@@ -61,7 +58,7 @@ export class ApiService {
     .subscribe(
       (response) =>  {
         this.results = response
-        let x = this.results.results[this.random]
+        let x = this.results.results[Math.floor(( Math.random() * 20) + 1)]
         this.bgChange(x.backdrop_path)
     })
   }
@@ -125,6 +122,7 @@ export class ApiService {
   }
     
   bgChange(bdPath) {
+    console.log(bdPath)
     this.bg = document.getElementById('background_wrap');
     let bdFull = 'url(https://image.tmdb.org/t/p/w1280/' + bdPath + ')'
     this.bg.style.backgroundImage = this.bg.style.backgroundImage = bdFull
@@ -149,6 +147,7 @@ export class ApiService {
       }
     }
   }
+  
   
   
 }

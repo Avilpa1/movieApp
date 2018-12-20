@@ -1,9 +1,9 @@
 body {
-    background-color: grey;
+    background-color: black;
     background-image: none;
 }
 
-    #background_wrap {
+#background_wrap {
     z-index: -100;
     position: fixed;
     background-position: center top;
@@ -11,8 +11,15 @@ body {
     left: 0;
     height: 100%;
     width: 100%;
+    background-image: none;
     background-size: cover;
     background-image: none;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
 }
