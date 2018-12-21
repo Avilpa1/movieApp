@@ -81,8 +81,13 @@ export class ApiService {
       (response) =>  {
         this.results = response
         console.log(response)
-        let x = this.results.results[0]
-        this.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id, x)
+
+        if(this.results.total_results == 0) {
+          this.router.navigate(['notfound'])
+        } else {
+          let x = this.results.results[0]
+          this.clickLoad(x.backdrop_path, x.title, x.overview, x.poster_path, x.id, x)
+        }
     })
   }
 

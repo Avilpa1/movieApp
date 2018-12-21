@@ -1,0 +1,26 @@
+.outerContainer{
+    /*position: relative;*/
+    padding-top: 110px;
+    overflow: auto;
+}
+
+.container {
+
+    background-color: rgba(79, 79, 79, 0.5);
+    margin-bottom: 7%;
+    margin-left: 13%;
+    margin-right: 13%;
+    color: white;
+    padding-bottom: 2%;
+    border-radius: 10px;
+}
+
+.inner {
+    text-align:center;
+
+    
+}
+
+#sad {
+    font-size: 300px;
+}

@@ -8,6 +8,7 @@ import { SearchNavComponent } from './search-nav/search-nav.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MainDisplayComponent } from './main-display/main-display.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 export const router: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,7 +18,8 @@ export const router: Routes = [
   { path: 'searchNav', component: SearchNavComponent },
   { path: 'home', component: HomePageComponent },
   { path: 'main', component: MainDisplayComponent },
-  { path: 'fav', component: FavoritesComponent }
+  { path: 'fav', component: FavoritesComponent },
+  { path: 'notfound', component: NotfoundComponent }
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

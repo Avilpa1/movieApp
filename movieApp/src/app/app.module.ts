@@ -14,6 +14,7 @@ import { routes } from './app.router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MainDisplayComponent } from './main-display/main-display.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FavoritesComponent } from './favorites/favorites.component';
     SearchNavComponent,
     HomePageComponent,
     MainDisplayComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,

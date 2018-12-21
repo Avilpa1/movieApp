@@ -126,13 +126,25 @@ export class UserService {
     this.activeId = window.sessionStorage.getItem('userId')
     this.activeToken = window.sessionStorage.getItem('token')
     
+    let location = window.location.href.substr(-4)
+    console.log(location)
+    
     if (this.activeId != null) {
       this.signUpHidden = 'true'
       this.loginButton = 'Sign Out'
       this.transformVal = 'true'
       this.findUserData()
-    } else {
+      
+    } else if (location == '/fav') {
+
         this.router.navigate(['home'])
+        this.userLoggedIn = ''
+        this.loginButton = 'Log in'
+        this.transformVal = 'false'
+        this.signUpHidden = 'false'
+    
+        
+    } else {
         this.userLoggedIn = ''
         this.loginButton = 'Log in'
         this.transformVal = 'false'
