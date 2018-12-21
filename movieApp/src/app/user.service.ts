@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from './api.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { ApiService } from './api.service';
 
 export class UserService {
 
-  constructor( public _http : HttpClient) { }
+  constructor( public _http : HttpClient, private router: Router) { }
   
   logoutResult: any
   userDataResult: any
@@ -88,7 +89,7 @@ export class UserService {
   }
   
   findUserData() {
-    this.findData(this.logInResult.userId, this.logInResult.token)
+    this.findData(this.activeId, this.activeToken)
       .subscribe( (response) =>  {
         this.userDataResult = response
         console.log(this.userDataResult)
@@ -107,7 +108,8 @@ export class UserService {
         
         window.sessionStorage.setItem('token', this.logInResult.token);
         window.sessionStorage.setItem('userId', this.logInResult.userId);
-        console.log(this.logInResult.userId)
+
+        // console.log(this.logInResult.userId)
         
         this.activeId = this.logInResult.userId
         this.activeToken = this.logInResult.token
@@ -116,7 +118,26 @@ export class UserService {
         this.getFav()
         this.hideButton()
         this.clearForm()
+        this.autoLogOut()
     })
+  }
+  
+  logInCheck() {
+    this.activeId = window.sessionStorage.getItem('userId')
+    this.activeToken = window.sessionStorage.getItem('token')
+    
+    if (this.activeId != null) {
+      this.signUpHidden = 'true'
+      this.loginButton = 'Sign Out'
+      this.transformVal = 'true'
+      this.findUserData()
+    } else {
+        this.router.navigate(['home'])
+        this.userLoggedIn = ''
+        this.loginButton = 'Log in'
+        this.transformVal = 'false'
+        this.signUpHidden = 'false'
+    }
   }
   
   logOutUser() {
@@ -134,9 +155,13 @@ export class UserService {
         this.loginButton = 'Log in'
         this.transformVal = 'false'
         this.signUpHidden = 'false'
-        
+        this.router.navigate(['home'])
         console.log('User logged out')
     })
+  }
+  
+  autoLogOut() {
+   window.setTimeout( () => { this.logOutUser() }, 300000)
   }
   
   signUpUser() {

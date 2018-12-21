@@ -21,12 +21,13 @@ export class MovieDisplayComponent {
     this.uService.favObj.results = this.maService.fullResults;
     
     this.uService.saveFav()
-      var x = document.getElementById('liked');
-      if (x.style.color === 'red') {
-          x.style.color = 'inherit';
-      } else {
-          x.style.color = 'red';
-      }
+    this.maService.setLike()
+      // var x = document.getElementById('liked');
+      // if (x.style.color === 'red') {
+      //     x.style.color = 'inherit';
+      // } else {
+      //     x.style.color = 'red';
+      // }
   }
   
 

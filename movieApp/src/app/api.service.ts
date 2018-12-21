@@ -51,7 +51,7 @@ export class ApiService {
   }
   
     getSimilarData(id) {
-      return this._http.get( this.mdbURL + '/movie/' + id + '/recommendations?api_key=' + this.api_key )
+      return this._http.get( this.mdbURL + '/movie/' + id + '/similar?api_key=' + this.api_key )
     }
   
   
@@ -124,7 +124,9 @@ export class ApiService {
     this.getSimilar(id)
     this.fullResults = fullResults
     this.year = fullResults.release_date.substr(0, 4)
+    this.likedVal = 'false'
     this.likeCheck()
+    
   }
     
   loadPage() {
@@ -158,6 +160,8 @@ export class ApiService {
     }
   }
   
-  
+  setLike() {
+    this.likedVal = 'true'
+  }
   
 }

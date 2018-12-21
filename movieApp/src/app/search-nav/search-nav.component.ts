@@ -13,6 +13,7 @@ export class SearchNavComponent implements OnInit {
 
   ngOnInit() {
     this.maService.getPopData()
+    this.uService.logInCheck()
   }
   
   ngAfterViewInit() {
