@@ -81,7 +81,7 @@ export class UserService {
   }
   
   delFav(id) {
-    this.delFavdata(id, this.logInResult.token)
+    this.delFavdata(id, this.activeToken)
       .subscribe( (response) =>  {
         this.userDataResult = response
         this.getFav()
@@ -108,8 +108,6 @@ export class UserService {
         
         window.sessionStorage.setItem('token', this.logInResult.token);
         window.sessionStorage.setItem('userId', this.logInResult.userId);
-
-        // console.log(this.logInResult.userId)
         
         this.activeId = this.logInResult.userId
         this.activeToken = this.logInResult.token
@@ -159,10 +157,10 @@ export class UserService {
       
         // document.getElementById("userNameDisplay").innerHTML = '<a id="userNameDisplay" (click)="uService.logOutUser()"></a>'
         this.userLoggedIn = ''
+        this.getFavResult = ''
         this.loginButton = 'Log in'
         this.transformVal = 'false'
         this.signUpHidden = 'false'
-        // this.maService.getPopData()
         this.router.navigate(['home'])
         console.log('User logged out')
     })
@@ -183,7 +181,6 @@ export class UserService {
   }
   
   saveFav () {
-    console.log(this.activeId + " " + this.activeToken)
     this.postFav(this.activeId, this.activeToken)
       .subscribe( (response) =>  {
         this.postFavResult = response

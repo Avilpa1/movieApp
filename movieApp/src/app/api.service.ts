@@ -83,7 +83,6 @@ export class ApiService {
         console.log(response)
         
         this.search = ' '
-        
         if(this.results.total_results == 0) {
           this.router.navigate(['notfound'])
         } else {
@@ -157,14 +156,17 @@ export class ApiService {
   // }
   
   likeCheck() {
+    if(this.uService.activeId != null) {
       for(let x=0; x < this.uService.getFavResult.length; x++ ) {
         if (this.fullResults.id == this.uService.getFavResult[x].movieId ) {
-          this.likedVal = 'true'
-          break
-        } else { 
-          this.likedVal = 'false'
+            this.likedVal = 'true'
+            break
+          } else { 
+            this.likedVal = 'false'
+        }
       }
     }
+
   }
   
   setLike() {

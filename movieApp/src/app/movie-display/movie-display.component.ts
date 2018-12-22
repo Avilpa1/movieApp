@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-display',
@@ -9,10 +10,13 @@ import { UserService } from '../user.service';
 })
 export class MovieDisplayComponent {
 
-  constructor( private maService: ApiService, private uService: UserService) { }
+  constructor( private maService: ApiService, private uService: UserService, private router: Router) { }
 
-  // ngOnInit() {
-  // }
+  ngOnInit() {
+    if(this.maService.fullResults == undefined) {
+      this.router.navigate(['home'])
+    }
+  }
 
   clickLike() {
     this.uService.favObj.title = this.maService.fullResults.title;
@@ -22,6 +26,7 @@ export class MovieDisplayComponent {
     
     this.uService.saveFav()
     this.maService.setLike()
+    this.uService.getFav()
       // var x = document.getElementById('liked');
       // if (x.style.color === 'red') {
       //     x.style.color = 'inherit';

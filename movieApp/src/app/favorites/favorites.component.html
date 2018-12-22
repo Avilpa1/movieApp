@@ -1,14 +1,14 @@
 <div class="outter">
   <div class='gridContainer' *ngIf="uService.getFavResult">
     <div *ngFor="let x of uService.getFavResult; let i = index">
-      <div *ngIf="i<9">
+      <!--<div *ngIf="i<">-->
         <div class="gridItems">
           <span>
             <img (click)="maService.clickLoad( x.results.backdrop_path, x.results.title, x.results.overview, x.results.poster_path, x.results.id, x.results )" src="https://image.tmdb.org/t/p/w500/{{ x.results.poster_path }}">
             <a id="delFav" (click)='uService.delFav(x.id)'>&#x2716;</a>
           </span>
         </div>
-      </div>
+      <!--</div>-->
     </div>
   </div>
 </div>
