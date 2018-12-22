@@ -15,6 +15,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MainDisplayComponent } from './main-display/main-display.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
     HomePageComponent,
     MainDisplayComponent,
     FavoritesComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    UserprofileComponent
   ],
   imports: [
     BrowserModule,

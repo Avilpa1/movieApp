@@ -81,7 +81,9 @@ export class ApiService {
       (response) =>  {
         this.results = response
         console.log(response)
-
+        
+        this.search = ' '
+        
         if(this.results.total_results == 0) {
           this.router.navigate(['notfound'])
         } else {

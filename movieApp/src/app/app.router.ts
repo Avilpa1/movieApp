@@ -9,6 +9,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MainDisplayComponent } from './main-display/main-display.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
 
 export const router: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,7 +20,8 @@ export const router: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'main', component: MainDisplayComponent },
   { path: 'fav', component: FavoritesComponent },
-  { path: 'notfound', component: NotfoundComponent }
+  { path: 'notfound', component: NotfoundComponent },
+  { path: 'userprofile', component: UserprofileComponent }
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

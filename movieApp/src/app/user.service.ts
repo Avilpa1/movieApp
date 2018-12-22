@@ -162,6 +162,7 @@ export class UserService {
         this.loginButton = 'Log in'
         this.transformVal = 'false'
         this.signUpHidden = 'false'
+        // this.maService.getPopData()
         this.router.navigate(['home'])
         console.log('User logged out')
     })
